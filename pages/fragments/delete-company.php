@@ -1,8 +1,8 @@
 <?php
 /**
-* kiosk-disable.php
+* delete-company.php
 *
-* Updates the status of the kiosk
+* Deletes the selected company
 * 
 * @author Darren Sison
 */ 

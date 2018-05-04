@@ -1,8 +1,8 @@
 <?php
 /**
-* kiosk-disable.php
+* delete-schedule.php
 *
-* Updates the status of the kiosk
+* Deletes the selected schedule
 * 
 * @author Darren Sison
 */ 

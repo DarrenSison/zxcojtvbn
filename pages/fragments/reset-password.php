@@ -1,8 +1,8 @@
 <?php
 /**
-* user-reset-password.php
+* reset-password.php
 *
-* Select user accounts from the database
+* Resets user password
 * 
 * @author Darren Sison
 */
