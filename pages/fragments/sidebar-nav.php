@@ -40,13 +40,10 @@
         </li>
 
         <li  style ="font-family: Cinzel Decorative;">
-            <a href="#"  style ="font-family: Cinzel Decorative; font-size:18px"><i class="fa fa-user" ></i> Accounts<span class="fa arrow"></span></a>
+            <a href="users.php"  style ="font-family: Cinzel Decorative; font-size:18px"><i class="fa fa-user" ></i> Accounts<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
                 <li style ="font-family: Cinzel Decorative;">
-                    <a  href="view-profile.php"><i class="fa fa-user fa-3x"></i> View Profile</a>
-                </li>
-                <li style ="font-family: Cinzel Decorative;">
-                    <a href="edit-profile.php"><i class="fa fa-pencil-square fa-3x"></i> Edit Profile</a>
+                    <a  href="users.php"><i class="fa fa-user fa-3x"></i>Manage Accounts</a>
                 </li>
             </ul>            
         </li>
