@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Home</title>
+  <title>Module 2</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -38,7 +38,7 @@
 
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand" href="index.html">SCIS</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -88,12 +88,12 @@
 										<input type="hidden" name="company_id" value="<?php echo $r['company_id']; ?>">
 										<input type="hidden" name="schedule_id" value="<?php echo $r['schedule_id']; ?>">
 										<?php
-										if(mysqli_fetch_array($q2)) {
-											?><input type="hidden" name="action" value="uncheck"><button class="btn btn-primary">CHECKED</button><?php
-										} else {
-											?><input type="hidden" name="action" value="check"><button class="btn btn-default">CHECK</button><?php
-										}
-									?>
+                      if(mysqli_fetch_array($q2)) {
+                        echo '<input type="hidden" name="action" value="uncheck"><button class="btn btn-primary">CHECKED</button>';
+                      } else {
+                        echo '<input type="hidden" name="action" value="check"><button class="btn btn-default">CHECK</button>';
+                      }
+                    ?>
 									</form>
 								</td>
 							<tr>
