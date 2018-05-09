@@ -40,7 +40,7 @@
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary" name ="register">Register</button>
 					</div>
-					<p class="message">Already Registered?<a href="index.php">Login Here</a></p>
+					<p class="message">Already Registered?<a href="login.php">Login Here</a></p>
 
 				</form>
 			</div>

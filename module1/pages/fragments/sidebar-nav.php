@@ -28,7 +28,7 @@
         </li>
 
         <li  style ="font-family: Cinzel Decorative;">
-            <a href="#"  style ="font-family: Cinzel Decorative; font-size:18px"><i class="fa fa-plus" ></i> Add<span class="fa arrow"></span></a>
+            <a href="company-add.php"  style ="font-family: Cinzel Decorative; font-size:18px"><i class="fa fa-plus" ></i> Add<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
                 <li style ="font-family: Cinzel Decorative;">
                     <a  href="company-add.php"><i class="fa fa-building-o fa-3x"></i>Add Company</a>

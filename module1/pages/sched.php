@@ -37,7 +37,7 @@ require '../classes/UserAccount.php';
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 style = "font-family: special elite; color:#000000">Schedules</h1>
+                        <h1 style = "font-family: courier new; color:#000000">Schedules</h1>
                 </div>
                 <div class="jumbotron"> 
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example" name="anothercontent">

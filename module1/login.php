@@ -6,37 +6,48 @@ require 'classes/UserAccount.php';
 <html lang="en">
 
 <head>
-      <title>Module 1</title><meta charset="UTF-8" />
-
+      <title>Admin Login</title><meta charset="UTF-8" />
       <link rel="stylesheet" href="pages/assets/css/style.css">
-
-      <style type="text/css">
-      body {
-        background-repeat: no-repeat;
-        background-size: 600px;
-		background-position: center;
-        background-color: white;
-      }
-      </style>
-
+      <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
 </head>
 <body>
-  <div align="left">
-    <div style="width:310px; border: solid 5px #686667; " align="left">
+  <div class="container">
+    <div class="col-sm-10" style="width: 350px; margin-left: 370px; margin-top: 30px;">
+                <div class="jumbotron">
+                    <div class="form-group">
+                        <img src="img/scislogo.png" style="width:250px; height:180px; ">
+                    </div>
       <?php
         if(isset($errMsg)){
           echo '<div style="color:black;text-align:center;font-size:120px;">'.$errMsg.'</div>';
         }
       ?>
-      <div style="background-color:#686667; color:#FFFFFF; padding:15px;text-align:center; font-family:life savers; font-size:30px;"><b>Admin Login</b></div>
-      <div style="margin:30px">
-          <form action="" method="post">
-          <label style="color:#000000; text-align: center; font-family:life savers; font-size:18px;"><b> Email: </b></label><input type="text" name="email" class="box"/><br /><br />
-          <label style="color:	#000000; text-align: center ;font-family:life savers; font-size:18px;"><b>Password:</b></label><input type="password" name="password" class="box" /><br/><br />
-          <input type="submit" name='submit' class="btn btn-warning" value="Submit" class="col s6" class='submit' style="background-color:#686667; font-family:life savers; font-size:18px;"/><br />
+      <div align="center" style="font-family:life savers"><b>Admin Login</b></div>
+          <form class="form-horizontal" style="margin-left: 6px;" action="" method="post">
+          <div class="form-group input-group">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-user"></span>
+                </span>
+              <input type="text" name="email" class="form-control" placeholder="Email"/>
+        </div>
+
+        <div class="form-group input-group">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-user"></span>
+                </span>
+              <input type="password" name="password" class="form-control"placeholder="Password"/>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" name='submit' class="btn btn-primary" value="Submit"/>
           </form>
-          <form action="signup.php" method="post">
-          <input type="submit" value="Add Account" name="signup" class="btn btn-warning" style="background-color:#686667; font-family:life savers; font-size:18px;"/>
+    </div>
       </div>
     </div>
   </div>
@@ -179,6 +190,9 @@ require 'classes/UserAccount.php';
 */
 ?>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 </body>
 </html>

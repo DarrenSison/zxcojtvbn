@@ -19,7 +19,7 @@
 </head>
 <body>
 <form name="reg" action="code_exec.php" onsubmit="return validateForm()" method="post">
-<table width="274" border="solid 10px" align="left" cellpadding="2" cellspacing="2" style="background-color:##686667">
+<table width="274" border="solid 10px" align="center" cellpadding="2" cellspacing="2" style="background-color:##686667">
   <tr>
     <td colspan="2">
     <div align="left">

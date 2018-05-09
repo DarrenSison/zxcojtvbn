@@ -44,14 +44,14 @@ echo 'class="active-menu"';
         <div id="page-inner">
           <div class="row">
             <div class="col-md-12">
-              <h1 style = "font-family: Palatino; color:#000000">Add Company
+              <h1 style = "font-family: courier new; color:#000000">Add Company
               </h1>   
             </div>    
           </div>
           <div class="jumbotron">
             <form name="reg" class="form-horizontal" action="" onsubmit="return validateForm()" method="post">
               <fieldset>
-                <legend style = "font-family: special elite;">New Company
+                <legend style = "font-family: courier new;">New Company
                 </legend>
                 <div class="form-group">
                   <label for="company_name" class="col-lg-2 control-label" style = "font-size: 110%;">Company Name
