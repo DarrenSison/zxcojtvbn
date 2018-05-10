@@ -6,6 +6,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+require 'classes/UserAccount.php';
+?>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,9 +25,12 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Allura|Arima+Madurai|Cinzel+Decorative|Corben|Dancing+Script|Galindo|Gentium+Book+Basic|Great+Vibes|Henny+Penny|Indie+Flower|Kaushan+Script|Kurale|Life+Savers|Love+Ya+Like+A+Sister|Milonga|Miltonian+Tattoo|Niconne|Oregano|Original+Surfer|Pangolin|Parisienne|Philosopher|Princess+Sofia|Rancho|Risque|Salsa|Schoolbell|Special+Elite" rel="stylesheet">		
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class=" sticky-footer bg-dark" id="page-top">
+
 <?php
 	if(isset($_POST['action'])) {
 		if($_POST['action'] == 'uncheck') {
@@ -37,22 +44,17 @@
 ?>
 
   <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="student-home.php">SCIS</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+           
+                <a class="navbar-brand" href="student-home.php"style ="font-family:courier new ;font-size: 200%;color: white;">SCIS</a> 
+            </div>
+    
+    <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px; font-family:courier new;">Date: <?php echo date("F d, Y"); ?> &nbsp; <a href="logout.php" class="btn btn-danger square-btn-adjust" onclick="return confirm('Are you sure you want to log out?');">Logout</a> </div>
 
-      <ul class="navbar-nav sidenav-toggler">
-        <li class="nav-item">
-          <a class="nav-link text-center" id="sidenavToggler">
-            <i class="fa fa-fw fa-angle-left"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
   </nav>
-  
+  <nav class="navbar-default navbar-side" role="navigation">
+</nav>
   <div class="content-wrapper">
     <div class="container-fluid">
       <?php 
