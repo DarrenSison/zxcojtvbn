@@ -1,29 +1,18 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: zsarlene
- * Date: 5/22/17
- */
 class UserAccount
 {
     private $user_id, $email, $password, $type, $firstname, $lastname;
 
     /**
      * UserAccount constructor.
-     * @param $accountId
-     * @param $username
+     * @param $user_id
+     * @param $email
      * @param $password
-     * @param $address
-     * @param $firstName
+     * @param $type
+     * @param $firstname
      * @param $lastName
-     * @param $middleName
-     * @param $status
-     * @param $emailAddress
-     * @param $birthday
-     * @param $phoneNumber
-     * @param $roleId
-     * @param $userPicture
+     * @param $lastname
      */
     public function __construct($user_id, $email, $password, $type, $firstname, $lastname)
     {
