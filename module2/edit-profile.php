@@ -80,71 +80,11 @@ require 'classes/UserAccount.php';
 
   <div class="content-wrapper">
     <div class="container-fluid">
-      <?php 
-          require('viewsched.php');
-          foreach($company_result as $res) {
-			  ?>
-			  <div class="card" data-toggle="collapse" href="#collapse_<?php echo $res[1]; ?>" role="button" aria-expanded="false" aria-controls="collapse_<?php echo $res[1]; ?>">
-                <div class="card-header">
-                  <h5 class="mb-0">
-                    <?php echo $res[1]; ?>
-                  </h5>
-                </div>
-              </div>
-			  <div class="collapse multi-collapse" id="collapse_<?php echo $res[1]; ?>">
-				  <div class="card card-body">
-					<table>
-						<?php
-						$q = mysqli_query($con, 'SELECT * FROM schedule WHERE company_id = ' .  $res[0] . ' ORDER BY date ASC') or die(mysqli_error($con));
-						while($r = mysqli_fetch_array($q)) {
-							$id = $r['schedule_id'];
-							?>
-							<tr>
-								<td><?php echo $res[1]; ?></td>
-								<td><?php echo $r['date']; ?></td>
-								<td><?php echo $r['start_time'] . ' - ' . $r['end_time']; ?></td>
-								<td><?php echo $r['room']; ?></td>
-								<td style="width:300px">
-									<form action="" method="post">
-									<?php 
-										$q2 = mysqli_query($con, "SELECT * FROM attend WHERE user_id = $userid AND company_id = {$res[0]} AND schedule_id = {$r['schedule_id']}") or die(mysqli_error($con));
-										?>
-										<input type="hidden" name="user_id" value="<?php echo $id; ?>">
-										<input type="hidden" name="company_id" value="<?php echo $r['company_id']; ?>">
-										<input type="hidden" name="schedule_id" value="<?php echo $r['schedule_id']; ?>">
-										<?php
-                      if(mysqli_fetch_array($q2)) {
-                        echo '<input type="hidden" name="action" value="uncheck"><button class="btn btn-primary">CHECKED</button>';
-                      } else {
-                        echo '<input type="hidden" name="action" value="check"><button class="btn btn-default">CHECK</button>';
-                      }
-                    ?>
-									</form>
-								</td>
-							<tr>
-						<?php } ?>
-					</table>
-				  </div>
-				</div>
-			  <?php
-            /*
-			echo '<div id="'.$res[1].'">
-              <div class="card">
-                <div class="card-header">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#'.$res[0].'" aria-expanded="true" aria-controls="collapseOne">
-                      '.$res[1].'
-                    </button>
-                  </h5>
-                </div>
-              </div>
-            </div>';
-			*/
-          }
-        ?>
+      
+           
       </div>
   </div>
-  
+     
              
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
