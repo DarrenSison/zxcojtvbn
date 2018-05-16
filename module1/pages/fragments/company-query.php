@@ -7,7 +7,6 @@
     $result = $query->fetchAll();
 
     echo "<tr>";
-    echo "<th>Company ID </th>";
     echo "<th>Company Name </th>";
     echo "<th>Contact Name </th>";
     echo "<th>Phone Number</th>";
@@ -18,7 +17,6 @@
     foreach($result as $query){
         $rid = $query['company_id'];
         echo "<tr>";
-        echo "<td>" . $query['company_id'] . "</td>";
         echo "<td>" . $query['company_name'] . "</td>";
         echo "<td>" . $query['contact_name'] . "</td>";
         echo "<td>" . $query['phone'] . "</td>";
