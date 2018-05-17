@@ -63,7 +63,7 @@ echo 'class="active-menu"';
                       </option>
                         <?php 
                           require_once 'fragments/connection.php';
-                          $usersQuerry = $pdo->prepare("SELECT company_name FROM company");
+                          $usersQuerry = $pdo->prepare("SELECT company_name FROM company WHERE archive='1'");
                           $usersQuerry->execute();
                           $users = $usersQuerry->fetchAll();
                           foreach ($users as $user){
@@ -127,6 +127,17 @@ $query1->execute();
 $result = $query1->fetchAll();
 foreach($result as $query1){
 $company_id = $query1['company_id'];
+}
+
+//validate if the room is available
+$query2 = $pdo->prepare("SELECT * FROM schedule WHERE date='$date' AND start_time='$start_time' AND room='$room'");
+$query2->execute();
+$result1 = $query2->fetchAll();
+foreach($result1 as $query2){
+echo '<script type="text/javascript">
+        alert("Room is not available!");
+      </script>';
+die();
 }
 
 $query = "INSERT INTO schedule(schedule_id, company_id, date, start_time, end_time, room) VALUES (DEFAULT, '$company_id', '$date', '$start_time', '$end_time', '$room')";

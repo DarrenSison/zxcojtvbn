@@ -82,15 +82,13 @@
 
                              <div class="form-group">
                               <label for="company_name" class="col-lg-2 control-label" style = "font-family: milonga; font-size: 110%;">Company Name</label>
-
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" name="company_id" value="<?php echo $companyqry['company_name'] ?>">
+                                <input type="text" class="form-control" name="company_name" value="<?php echo $companyqry['company_name'] ?>">
                               </div>
-                              </div>     
-
+                              </div>  
+                                 
                             <div class="form-group">
                               <label for="contact_name" class="col-lg-2 control-label" style = "font-family: milonga;font-size: 110%;">Contact</label>
-
                               <div class="col-lg-10">
                                 <input type="text" class="form-control" name="contact_name" value="<?php echo $companyqry['contact_name'] ?>">
                               </div>
@@ -100,6 +98,13 @@
                               <label for="phone" class="col-lg-2 control-label" style = "font-family: milonga;font-size: 110%;"> Phone Number</label>
                               <div class="col-lg-10">
                                 <input type="text" class="form-control" name="phone" value="<?php echo $companyqry['phone'] ?>">
+                              </div>
+                              </div>
+
+                            <div class="form-group">
+                              <label for="landline" class="col-lg-2 control-label" style = "font-family: milonga;font-size: 110%;"> Landline</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" name="landline" value="<?php echo $companyqry['landline'] ?>">
                               </div>
                               </div>
 
