@@ -3,7 +3,7 @@
     $usr = $_SESSION['email'];
     $user_id = $user->getAccountId();
  //   $query = $pdo->prepare("SELECT company.company_name AS "company", schedule.date AS "date", schedule.start_time AS "start", schedule.end_time AS "end", schedule.room AS "room" FROM company INNER JOIN schedule ON company.company_id=schedule.company_id");
-    $query = $pdo->prepare("SELECT schedule.schedule_id, company.company_id, company.company_name AS 'company', schedule.date AS 'date', schedule.start_time AS 'start', schedule.end_time AS 'end', schedule.room AS 'room' FROM company INNER JOIN schedule ON company.company_id=schedule.company_id WHERE schedule.archive='1'");
+    $query = $pdo->prepare("SELECT schedule.schedule_id, company.company_id, company.company_name AS 'company', schedule.date AS 'date', schedule.start_time AS 'start', schedule.end_time AS 'end', schedule.room AS 'room' FROM company INNER JOIN schedule ON company.company_id=schedule.company_id WHERE schedule.archive='1' ORDER BY date, start_time");
     $query->execute();
     $result = $query->fetchAll();
 

@@ -85,14 +85,14 @@ echo 'class="active-menu"';
                   <label for="start_time" class="col-lg-2 control-label" style = "font-size: 110%;">Start Time
                   </label>
                   <div class="col-lg-10">
-                    <input type="text" class="form-control" name="start_time">
+                    <input type="time" class="form-control" name="start_time">
                   </div>
                 </div>  
                 <div class="form-group">
                   <label for="end_time" class="col-lg-2 control-label" style = "font-size: 110%;">End Time
                   </label>
                   <div class="col-lg-10">
-                    <input type="text" class="form-control" name="end_time">
+                    <input type="time" class="form-control" name="end_time">
                   </div>
                 </div>
                 <div class="form-group">
@@ -121,16 +121,15 @@ $date = $_POST['date'];
 $start_time = $_POST['start_time'];
 $end_time = $_POST['end_time'];
 $room = $_POST['room'];
-
+//get company id
 $query1 = $pdo->prepare("SELECT company_id FROM company WHERE company_name='$company_name'");
 $query1->execute();
 $result = $query1->fetchAll();
 foreach($result as $query1){
 $company_id = $query1['company_id'];
 }
-
 //validate if the room is available
-$query2 = $pdo->prepare("SELECT * FROM schedule WHERE date='$date' AND start_time='$start_time' AND room='$room'");
+$query2 = $pdo->prepare("SELECT * FROM schedule WHERE date='$date' AND start_time BETWEEN '$start_time' AND SUBTIME('$end_time', '0:01:00') AND room='$room'");
 $query2->execute();
 $result1 = $query2->fetchAll();
 foreach($result1 as $query2){
