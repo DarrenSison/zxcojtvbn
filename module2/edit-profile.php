@@ -1,8 +1,20 @@
 <?php include "connection.php"; ?>
-<?php
-	//$userid = $_SESSION[];
-	$userid = 6;
-?>
+      <?php
+        //Start your session
+        session_start();
+        if (isset($_SESSION['email']) && $_SESSION['email'] == true) {
+        } else {
+            header("location: login.php");
+        }
+
+        function echoActiveClassIfRequestMatches($requestUri){
+            $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
+
+            if ($current_file_name == $requestUri)
+                echo 'class="active-menu"';
+        }
+		$userid = $_SESSION['user_id'];
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 

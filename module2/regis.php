@@ -51,15 +51,15 @@
 
 		//if there are no errors, save user to database
 		if(count($errors) == 0) {
-			$password = md5($password);
-			$sql = "INSERT INTO user(firstname,lastname,email,password) 
-							VALUES('$firstname','$lastname', '$email','$password')";
+//			$password = md5($password);
+			$sql = "INSERT INTO user(firstname,lastname,type,email,password) 
+							VALUES('$firstname','$lastname', '2', '$email','$password')";
 
 			mysqli_query($con, $sql);
 
 			echo '<script type="text/javascript">
                       alert("Welcome! Your account has been created. please login to manage your schedules!");
-                         location="index.php";
+                         location="login.php";
                            </script>';
 		}
 	}

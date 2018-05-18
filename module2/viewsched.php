@@ -1,5 +1,5 @@
 <?php 
-session_start();
+//session_start();
 
     $company_query = "SELECT company_id, company_name FROM company WHERE company_id IN (SELECT company_id FROM schedule) ORDER BY company_name";
     $company = mysqli_query($con, $company_query) or die(mysqli_error($con));
