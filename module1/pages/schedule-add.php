@@ -129,7 +129,7 @@ foreach($result as $query1){
 $company_id = $query1['company_id'];
 }
 //validate if the room is available
-$query2 = $pdo->prepare("SELECT * FROM schedule WHERE date='$date' AND start_time BETWEEN '$start_time' AND SUBTIME('$end_time', '0:01:00') AND room='$room'");
+$query2 = $pdo->prepare("SELECT * FROM schedule WHERE date='$date' AND start_time BETWEEN '$start_time' AND SUBTIME('$end_time', '0:00:01') AND room='$room'");
 $query2->execute();
 $result1 = $query2->fetchAll();
 foreach($result1 as $query2){
@@ -138,6 +138,14 @@ echo '<script type="text/javascript">
       </script>';
 die();
 }
+//validate if time is valid
+if (($end_time-$start_time)<0) {
+echo '<script type="text/javascript">
+        alert("Please check your time input!");
+      </script>';
+die();
+}
+
 
 $query = "INSERT INTO schedule(schedule_id, company_id, date, start_time, end_time, room, archive) VALUES (DEFAULT, '$company_id', '$date', '$start_time', '$end_time', '$room', '1')";
 $insert = $db->query($query);

@@ -27,7 +27,7 @@
         echo "<td>" . $query['room'] . "</td>";
         echo "</td>";
         echo "<td>";
-        echo '<a href="sched-list.php?id='.$query['schedule_id'].'"><button class="btn btn-primary">View List</button></a>';
+        echo '<a href="sched-list.php?id='.$query['schedule_id'].'"><button class="btn btn-primary">View List</button></a> ';
 //        echo "</td>";
 //		echo "<td>";
 		echo '<a href="fragments/delete-schedule.php?id='.$query['schedule_id'].'"><button class="btn btn-danger">Delete</button></a>';
