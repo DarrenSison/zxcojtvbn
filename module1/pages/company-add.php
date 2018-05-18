@@ -100,6 +100,17 @@ $contact_name = $_POST['contact_name'];
 $phone = $_POST['phone'];
 $landline = $_POST['landline'];
 
+//validate if the company is not in the database
+$query2 = $pdo->prepare("SELECT * FROM company WHERE company_name='$company_name' AND archive='1'");
+$query2->execute();
+$result1 = $query2->fetchAll();
+foreach($result1 as $query2){
+echo '<script type="text/javascript">
+        alert("Company is already registered");
+      </script>';
+die();
+}
+
 $query = "INSERT INTO company(company_id, company_name, contact_name, phone, landline) VALUES (DEFAULT, '$company_name', '$contact_name', '$phone', '$landline')";
 $insert = $db->query($query);
 if($insert){
