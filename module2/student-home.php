@@ -1,7 +1,7 @@
 <?php include "connection.php"; ?>
 <?php
 	//$userid = $_SESSION[];
-	$userid = 6;
+	$userid = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,12 +34,38 @@ require 'classes/UserAccount.php';
 
 <?php
 	if(isset($_POST['action'])) {
+		function extractCompanyID($scheduleID, $con) {
+			$q = mysqli_query($con,"SELECT company_id FROM schedule WHERE schedule_id = $scheduleID");
+			return mysqli_fetch_array($q)['company_id'];
+		}
+		function isConflict($attend_start_time, $attend_end_time, $sched_start_time, $sched_end_time) {
+			$attend_start_time = strtotime($attend_start_time);
+			$attend_end_time = strtotime($attend_end_time);
+			$sched_start_time = strtotime($sched_start_time);
+			$sched_end_time = strtotime($sched_end_time);
+			if($attend_start_time === $sched_start_time) { return true; }
+			else if(($attend_start_time < $sched_start_time) && ($attend_end_time > $sched_start_time)) { return true; }
+			else if(($attend_start_time > $sched_start_time) && ($attend_end_time < $sched_start_time)) { return true; }
+			return false;
+		}
+		
 		if($_POST['action'] == 'uncheck') {
-			mysqli_query($con,"DELETE FROM attend WHERE user_id = $userid AND company_id = {$_POST['company_id']} AND schedule_id = {$_POST['schedule_id']}");
+			mysqli_query($con,"DELETE FROM attend WHERE user_id = $userid AND schedule_id = {$_POST['schedule_id']}");
 			
 		} else if($_POST['action'] == 'check') {
-			mysqli_query($con,"DELETE FROM attend WHERE user_id = $userid AND company_id = {$_POST['company_id']}");
-			mysqli_query($con,"INSERT INTO attend(user_id, company_id, schedule_id) VALUES('$userid', '{$_POST['company_id']}', '{$_POST['schedule_id']}')");
+			$q = mysqli_query($con,"SELECT start_time, end_time FROM schedule WHERE schedule_id = {$_POST['schedule_id']}");
+			$r = mysqli_fetch_array($q);
+			$sched_start_time = $r['start_time'];
+			$sched_end_time = $r['end_time'];
+			
+			$hasConflict = false;
+			$q = mysqli_query($con,"SELECT start_time, end_time FROM schedule WHERE schedule_id IN (SELECT schedule_id FROM attend WHERE user_id = $userid)");
+			while($r = mysqli_fetch_array($q)) { if(isConflict($r['start_time'], $r['end_time'], $sched_start_time, $sched_end_time)) { $hasConflict = true; break; } }
+			if($hasConflict) { ?><script>alert('Conflicting schedule.');</script><?php }
+			else {
+				mysqli_query($con,"DELETE FROM attend WHERE user_id = $userid AND schedule_id IN (SELECT schedule_id FROM schedule WHERE company_id = " . extractCompanyID($_POST['schedule_id'], $con) . ")");
+				mysqli_query($con,"INSERT INTO attend(user_id, schedule_id) VALUES('$userid', '{$_POST['schedule_id']}')") or die(mysqli_error($con));
+			}
 		}
 	}
 ?>
@@ -107,10 +133,9 @@ require 'classes/UserAccount.php';
 								<td style="width:300px">
 									<form action="" method="post">
 									<?php 
-										$q2 = mysqli_query($con, "SELECT * FROM attend WHERE user_id = $userid AND company_id = {$res[0]} AND schedule_id = {$r['schedule_id']}") or die(mysqli_error($con));
+										$q2 = mysqli_query($con, "SELECT * FROM attend WHERE user_id = $userid AND schedule_id = {$r['schedule_id']}") or die(mysqli_error($con));
 										?>
-										<input type="hidden" name="user_id" value="<?php echo $id; ?>">
-										<input type="hidden" name="company_id" value="<?php echo $r['company_id']; ?>">
+										<input type="hidden" name="user_id" value="<?php echo $userid; ?>">
 										<input type="hidden" name="schedule_id" value="<?php echo $r['schedule_id']; ?>">
 										<?php
                       if(mysqli_fetch_array($q2)) {
