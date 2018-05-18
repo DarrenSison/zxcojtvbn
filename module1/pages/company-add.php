@@ -111,7 +111,7 @@ echo '<script type="text/javascript">
 die();
 }
 
-$query = "INSERT INTO company(company_id, company_name, contact_name, phone, landline) VALUES (DEFAULT, '$company_name', '$contact_name', '$phone', '$landline')";
+$query = "INSERT INTO company(company_id, company_name, contact_name, phone, landline, archive) VALUES (DEFAULT, '$company_name', '$contact_name', '$phone', '$landline', '1')";
 $insert = $db->query($query);
 if($insert){
 echo '<script type="text/javascript">

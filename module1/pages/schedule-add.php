@@ -139,7 +139,7 @@ echo '<script type="text/javascript">
 die();
 }
 
-$query = "INSERT INTO schedule(schedule_id, company_id, date, start_time, end_time, room) VALUES (DEFAULT, '$company_id', '$date', '$start_time', '$end_time', '$room')";
+$query = "INSERT INTO schedule(schedule_id, company_id, date, start_time, end_time, room, archive) VALUES (DEFAULT, '$company_id', '$date', '$start_time', '$end_time', '$room', '1')";
 $insert = $db->query($query);
 if($insert){
 echo '<script type="text/javascript">

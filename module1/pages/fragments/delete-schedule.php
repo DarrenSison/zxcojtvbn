@@ -14,10 +14,10 @@ $query->execute();
 
 if($query){
         echo '<script type="text/javascript">
-              alert("Schedule Revoked!");
+              alert("Schedule Deleted!");
               location="../sched.php";
               </script>';
     } else {
-        echo '<script>alert("Failed to revoke.")</script>';
+        echo '<script>alert("Failed to delete.")</script>';
     }
 ?>

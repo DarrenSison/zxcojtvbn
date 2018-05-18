@@ -24,8 +24,8 @@
         echo "</td>";
 		echo "<td>";
 		echo '<a href="edit-company.php?id='.$query['company_id'].'"><button class="btn">Edit Company</button></a>';
-        echo "</td>";
-		echo "<td>";
+ //       echo "</td>";
+//		echo "<td>";
 		echo '<a href="fragments/delete-company.php?id='.$query['company_id'].'"><button class="btn btn-danger">Delete</button></a>';
 		echo "</td>";
         echo "</tr>";
