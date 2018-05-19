@@ -44,18 +44,6 @@ require 'classes/UserAccount.php';
 
 <body class=" sticky-footer bg-dark" id="page-top">
 
-<?php
-	if(isset($_POST['action'])) {
-		if($_POST['action'] == 'uncheck') {
-			mysqli_query($con,"DELETE FROM attend WHERE user_id = $userid AND company_id = {$_POST['company_id']} AND schedule_id = {$_POST['schedule_id']}");
-			
-		} else if($_POST['action'] == 'check') {
-			mysqli_query($con,"DELETE FROM attend WHERE user_id = $userid AND company_id = {$_POST['company_id']}");
-			mysqli_query($con,"INSERT INTO attend(user_id, company_id, schedule_id) VALUES('$userid', '{$_POST['company_id']}', '{$_POST['schedule_id']}')");
-		}
-	}
-?>
-<div>
   <!-- Navigation-->
   <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -90,12 +78,81 @@ require 'classes/UserAccount.php';
         </div>
 </nav>
 
-  <div class="content-wrapper">
+  
+<div class="content-wrapper">
     <div class="container-fluid">
-      
-           
-      </div>
-  </div>
+    <?php
+                
+                if(isset($_POST['saveprofile'])){
+                    $kiosk = $_SESSION["userAccount"];
+                    $user_id = $_GET['id'];
+
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+                    $firstname = $_POST['firstname'];
+                    $lastname = $_POST['lastname'];
+
+                    include 'connection.php';
+
+                    $sql = $pdo->prepare("UPDATE user SET email='$email', password='$password', firstname='$firstname', lastname='$lastname' WHERE user_id='$user_id'");
+                    $sql->execute();
+                    header("location:student-home.php");
+                }
+            ?>
+     
+       <div id="page-wrapper">
+       <div id="page-inner">
+       <?php
+                        $pdo = new PDO('mysql:host=localhost;dbname=databaseojt', 'root', '');
+                        $qry = $pdo->prepare("SELECT * FROM user WHERE user_id = '$id'");
+                        $qry->execute();
+                        $userqry = $qry->fetch(); 
+
+        ?> 
+            <div class="jumbotron">
+                        <form class="form-horizontal" action="" method="post">
+                          <fieldset>
+                            <legend style = "font-family: courier new;">Edit Profile</legend>
+                            <div class="form-group">
+                              <label for="firstname" class="col-lg-2 control-label" style = "font-family: courier new;font-size: 110%;"> First Name</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" name="firstname" value="<?php echo $userqry['firstname'] ?>">
+                              </div>
+                              </div>
+
+                              <div class="form-group">
+                              <label for="lastname" class="col-lg-2 control-label" style = "font-family: courier new;font-size: 110%;"> Last Name</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" name="lastname" value="<?php echo $userqry['lastname'] ?>">
+                              </div>
+                              </div>
+
+                             <div class="form-group">
+                              <label for="email" class="col-lg-2 control-label" style = "font-family: courier new; font-size: 110%;">Email</label>
+                              <div class="col-lg-10">
+                                <input type="text" class="form-control" name="user_id" value="<?php echo $userqry['email'] ?>">
+                              </div>
+                              </div>  
+                                 
+                            <div class="form-group">
+                              <label for="password" class="col-lg-2 control-label" style = "font-family: courier new;font-size: 110%;">Password</label>
+                              <div class="col-lg-10">
+                                <input type="password" class="form-control" name="password" value="<?php echo $userqry['password'] ?>">
+                              </div>
+                            </div>  
+                              
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                                <button type="submit" name="saveprofile" class="btn btn-primary" id="saveprofile" value="submit">Confirm</button>
+                                </div>
+                            </div>
+                              
+                            </fieldset>
+                        </form>
+                    </div>
+    </div>
+<div>
      
              
     <!-- /.container-fluid-->
