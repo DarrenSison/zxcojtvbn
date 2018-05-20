@@ -49,6 +49,18 @@
 
                     	include 'fragments/connection.php';
 
+                       //  //validate if the company is not in the database
+                       // // $company_name = $companyqry['company_name'];
+                       //  $query2 = $pdo->prepare("SELECT * FROM company WHERE company_name='$company_name' AND archive='1'");
+                       //  $query2->execute();
+                       //  $result1 = $query2->fetchAll();
+                       //  foreach($result1 as $query2){
+                       //  echo '<script type="text/javascript">
+                       //          alert("Company is already registered");
+                       //        </script>';
+                       //  die();
+                       //  }
+
                     	$sql = $pdo->prepare("UPDATE company SET company_name='$company_name', contact_name='$contact_name', phone='$phone', landline='$landline' WHERE company_id='$company_id'");
                         $sql->execute();
                         header("location:index.php");
@@ -61,21 +73,12 @@
                     <?php
                         $company_id = $_GET['id'];
 
-                        //validate if the company is not in the database
-                        $query2 = $pdo->prepare("SELECT * FROM company WHERE company_name='$company_name' AND archive='1'");
-                        $query2->execute();
-                        $result1 = $query2->fetchAll();
-                        foreach($result1 as $query2){
-                        echo '<script type="text/javascript">
-                                alert("Company is already registered");
-                              </script>';
-                        die();
-                        }
                         
                         //QUERY THE ACCOUNT DATA
                         $qry = $pdo->prepare("SELECT * FROM company WHERE company_id = '$company_id'");
                         $qry->execute();
                         $companyqry = $qry->fetch(); 
+
 
 
                     ?> 
