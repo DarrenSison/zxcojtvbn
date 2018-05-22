@@ -10,7 +10,6 @@
     session_start();
     $sessionUserAccount = $_SESSION["userAccount"];
     include 'fragments/connection.php';
-	include("connect.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,19 +84,12 @@
                         $sql->execute();
                         header("location:sched.php");
 
-						 //notify users that is registered in the schedule
-                        $subject = $company_name;
-                        $comment = 'Your reserved exam schedule made some changes. Please re-check if it is an appropriate time for you.';
-                        $query4 = $pdo->prepare("SELECT user_id FROM attend WHERE schedule_id='$schedule_id' ");
-                        $query4->execute();
-                        $result4 = $query4->fetchAll();
-                        foreach($result4 as $query4){
-                        $user_id = $query4['user_id'];
-						echo $user_id;
-                        $query5 = "INSERT INTO comments(comment_subject, comment_text, user_id) VALUES ('$subject', '$comment', '$user_id')";
-                         mysqli_query($con, $query5);
-                        }
-						
+
+                         include("connect.php");
+                         $subject = $company_name;
+                         $comment = 'Your reserved exam schedule made some changes. Please check if it is an appropriate time for you.';
+                         $query = "INSERT INTO comments(comment_subject, comment_text) VALUES ('$subject', '$comment')";
+                         mysqli_query($con, $query);
                     }
                 ?>
                 <?php include 'fragments/sidebar-nav.php'; ?>
