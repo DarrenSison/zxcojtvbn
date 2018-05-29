@@ -15,6 +15,14 @@
         }
 		$userid = $_SESSION['user_id'];
     ?>
+	
+	<?php
+	try{
+		$pdo = new PDO("mysql:host=localhost;dbname=databaseojt","root","");
+	} catch (PDOException $e) {
+		exit("Error: Could not establish connection to database.");
+	}
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,9 +92,7 @@ require 'classes/UserAccount.php';
     <?php
                 
                 if(isset($_POST['saveprofile'])){
-                    $kiosk = $_SESSION["userAccount"];
-                    $user_id = $_GET['id'];
-
+					$user_id = $_SESSION['user_id'];
                     $email = $_POST['email'];
                     $password = $_POST['password'];
                     $firstname = $_POST['firstname'];
@@ -103,8 +109,9 @@ require 'classes/UserAccount.php';
        <div id="page-wrapper">
        <div id="page-inner">
        <?php
+						$user_id = $_SESSION['user_id'];
                         $pdo = new PDO('mysql:host=localhost;dbname=databaseojt', 'root', '');
-                        $qry = $pdo->prepare("SELECT * FROM user WHERE user_id = '$id'");
+                        $qry = $pdo->prepare("SELECT * FROM user WHERE user_id = '$user_id'");
                         $qry->execute();
                         $userqry = $qry->fetch(); 
 
@@ -130,7 +137,7 @@ require 'classes/UserAccount.php';
                              <div class="form-group">
                               <label for="email" class="col-lg-2 control-label" style = "font-family: courier new; font-size: 110%;">Email</label>
                               <div class="col-lg-10">
-                                <input type="text" class="form-control" name="user_id" value="<?php echo $userqry['email'] ?>">
+                                <input type="text" class="form-control" name="email" value="<?php echo $userqry['email'] ?>">
                               </div>
                               </div>  
                                  
