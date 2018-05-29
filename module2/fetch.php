@@ -21,7 +21,7 @@ if(mysqli_num_rows($result) > 0)
  {
    $output .= '
    <li>
-   <a href="#">
+   <a href="notification.php?id='.$row['comment_id'].'">
    <strong>'.$row["comment_subject"].'</strong><br />
    <small><em>'.$row["comment_text"].'</em></small>
    </a>
