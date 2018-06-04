@@ -18,8 +18,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +42,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body class=" sticky-footer bg-dark" id="page-top">
+<body class="sticky-footer bg-dark"  id="page-top">
 
 <?php
 	if(isset($_POST['action'])) {
@@ -83,20 +81,19 @@
 		}
 	}
 ?>
-<div>
+
   <!-- Navigation-->
-  <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+  <nav class="navbar navbar-cls-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-           
                 <a class="navbar-brand" href="student-home.php"style ="font-family:courier new ;font-size: 200%;color: white;"></a> 
             </div>
 
 
-    <div style="color: red; padding: 15px 50px 5px 50px; float: right; font-size: 16px; font-family:courier new;">Date: <?php echo date("F d, Y"); ?> &nbsp; <a href="logout.php" class="btn btn-danger square-btn-adjust" onclick="return confirm('Are you sure you want to log out?');">Logout</a> </div>
+    <div style="color: white; padding: 15px 50px 5px 1000px; float: right; font-size: 16px; font-family:courier new;">Date: <?php echo date("F d, Y"); ?> &nbsp; <a href="logout.php" class="btn btn-danger square-btn-adjust" onclick="return confirm('Are you sure you want to log out?');">Logout</a> </div>
 
   </nav>
   
-</div>
+
 
     <div id="wrapper">
 
@@ -144,7 +141,7 @@
               </div>
 			  <div class="collapse multi-collapse" id="collapse_<?php echo $res[1]; ?>">
 				  <div class="card card-body">
-					<table>
+					<table class="table table-stripped table-bordered table-hover">
 						<?php
 						$q = mysqli_query($con, 'SELECT * FROM schedule WHERE company_id = ' .  $res[0] . ' ORDER BY date ASC') or die(mysqli_error($con));
 						while($r = mysqli_fetch_array($q)) {
